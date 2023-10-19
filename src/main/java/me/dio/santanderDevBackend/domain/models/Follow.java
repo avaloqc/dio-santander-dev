@@ -11,14 +11,14 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-@Entity(name = "tb_achievement")
-public class Achievement {
+@Entity(name = "tb_follow")
+public class Follow {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String description;
-    private int lvl;
-    private int current_goal;
+    private int followedByUser = 0;
+    private int followingUser = 0;
+
 
 }

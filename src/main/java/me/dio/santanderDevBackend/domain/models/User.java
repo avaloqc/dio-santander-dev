@@ -10,13 +10,18 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import jakarta.persistence.OneToMany;
 
-
+@AllArgsConstructor
+@Getter
+@Setter
 @Entity(name = "tb_user")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     @Column(name="email", nullable = false, unique = true, length = 15)
@@ -27,7 +32,7 @@ public class User {
     private Account account;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private ArrayList<Follows> follows;
+    private ArrayList<Follow> follows;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private ArrayList<Stat> stats;
