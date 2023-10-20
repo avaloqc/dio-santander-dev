@@ -16,9 +16,7 @@ public class Languages {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long accountId;
-    @Column(unique = true, length = 12)
     private String name;
-    @Column(unique = true, length = 6)
     private String code;
     private String icon;
 
