@@ -1,20 +1,15 @@
 package me.dio.santanderDevBackend.domain.models;
 
-import java.util.ArrayList;
+import java.util.List;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import jakarta.persistence.OneToMany;
 
+@NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
@@ -23,21 +18,26 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private String name; 
     
-    @Column(name="email", nullable = false, unique = true, length = 15)
+    @Column(name="email", nullable = false, unique = true, length = 45)
     private String email;
-    private String date_of_brith;
+    private String date_of_birth;
 
     @OneToOne(cascade = CascadeType.ALL)
     private Account account;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private ArrayList<Follow> follows;
+    private List<Follow> follows;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private ArrayList<Stat> stats;
+    private List<Stat> stats;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private ArrayList<Achievement> achievements;
+    private List<Achievement> achievements;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Languages> languages;
 
 }
