@@ -40,9 +40,17 @@ classDiagram
     followingUser: Number
   }
 
+  class Languages {
+    name: String
+    code: String
+    icon: String
+  }
+
   User "1" *--> "1" Account
   User "1" *--> "N" Stats
   User "1" *--> "N" Achievements
   User "1" *--> "N" Follows
+  User "1" *--> "N" Languages
+
 
 ```
