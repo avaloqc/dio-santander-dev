@@ -7,5 +7,7 @@ import me.dio.santanderDevBackend.domain.models.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
+
+    boolean existsByAccountUsername(String accountUsername);  //Join verification
     
 }
